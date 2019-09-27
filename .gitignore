@@ -1,0 +1,9 @@
+# Ignore everything in our config
+**/*
+
+# Except our whitelisted files.
+!**/*.py
+!**/*.yaml
+
+secrets.py
+__pycache__

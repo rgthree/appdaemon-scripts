@@ -1,0 +1,61 @@
+
+x-base: &base
+  module: binary_sensor
+  class: BinarySensor
+  global_dependencies:
+    - globals
+    - secrets
+
+basement_tv_on_led_strip:
+  <<: *base
+  trigger: 'on'
+  sensors:
+    - binary_sensor.basement_tv
+  entities_on:
+    - light.basement_tv_led_strip
+
+basement_tv_off_led_strip:
+  <<: *base
+  trigger: 'off'
+  sensors:
+    - binary_sensor.basement_tv
+  entities_off:
+    - light.basement_tv_led_strip
+
+basement_tv_on:
+  <<: *base
+  trigger: 'on'
+  app_switch: input_boolean.automate_dehumidifier
+  sensors:
+    - binary_sensor.basement_tv
+  entities_off:
+    - switch.dehumidifier
+
+basement_tv_off:
+  <<: *base
+  trigger: 'off'
+  app_switch: input_boolean.automate_dehumidifier
+  sensors:
+    - binary_sensor.basement_tv
+  entities_on:
+    - switch.dehumidifier
+
+notify_basement_water_01:
+  <<: *base
+  trigger: 'on'
+  sensors:
+    - binary_sensor.xiaomi_sensor_water_bsmt_01
+  services:
+    - service: secret_primary_notification_service
+      title: 'Water Detected'
+      message: 'Water is detected from entity xiaomi_sensor_water_bsmt_01'
+
+notify_basement_water_02:
+  <<: *base
+  trigger: 'on'
+  sensors:
+    - binary_sensor.xiaomi_sensor_water_bsmt_02
+  services:
+    - service: secret_primary_notification_service
+      title: 'Water Detected'
+      message: 'Water is detected from entity xiaomi_sensor_water_bsmt_02'

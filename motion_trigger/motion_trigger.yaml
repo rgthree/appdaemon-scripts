@@ -1,0 +1,13 @@
+
+basement_door_trigger:
+  module: motion_trigger
+  class: MotionTrigger
+  sensors:
+    - binary_sensor.wyzesense_basement_door
+    - binary_sensor.wyzesense_basement_bar_motion
+  entities_on:
+    - light.basement_stairs_led_strip
+  delay: 30
+  global_dependencies:
+    - globals
+    - secrets

@@ -1,0 +1,25 @@
+
+lightify_switch_toggle:
+  module: lightify_switch
+  class: LightifySwitch
+  switch_ieee: secret_lightify_switch_ieee
+  turn_on_top_left_presses_1:
+    - script.turn_on_living_room_lights
+  turn_on_top_left_presses_2:
+    - script.turn_off_automate_living_room_lights
+    - script.living_room_lights_full_brightness
+  turn_on_top_left_presses_3:
+    - script.turn_off_automate_living_room_lights
+    - script.living_room_lamps_random_color
+  turn_on_bottom_left_presses_1:
+    - script.turn_off_living_room_lights
+  turn_on_bottom_left_presses_2:
+    - script.turn_on_automate_living_room_lights
+    # - script.living_room_lamps_turn_on_and_set_default_temp_and_brightness
+  turn_on_top_left_hold:
+    - script.turn_on_automate_living_room_lights
+  turn_on_bottom_left_hold:
+    - script.turn_off_automate_living_room_lights
+  global_dependencies:
+    - globals
+    - secrets

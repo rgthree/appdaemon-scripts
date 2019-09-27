@@ -1,0 +1,12 @@
+
+flux_living_room:
+  module: flux
+  class: Flux
+  app_switch: input_boolean.automate_living_room_lights
+  entities:
+    - light.rgbw_bulb_bookcase_right
+    - light.rgbw_bulb_bookcase_left
+    - light.rgbw_bulb_side_table
+  global_dependencies:
+    - globals
+    - secrets

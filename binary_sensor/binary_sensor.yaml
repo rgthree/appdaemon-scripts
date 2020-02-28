@@ -6,6 +6,14 @@ x-base: &base
     - globals
     - secrets
 
+restart_internet:
+  <<: *base
+  trigger: 'off'
+  sensors:
+    - binary_sensor.internet
+  entities_on:
+    - script.cycle_modem
+
 basement_tv_on_led_strip:
   <<: *base
   trigger: 'on'
